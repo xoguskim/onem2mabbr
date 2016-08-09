@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="onem2mAbbr">
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/jquery/dist/jquery.js"></script>
+    <script src="/javascripts/angular/angular.js"></script>
+    <script src="/javascripts/ngui.abbr.js"></script>
+    <style>
+      .abbr-item {
+        border-bottom: 1px solid lightgray;
+      }
+      .abbr-item > div {
+        float: left;
+      }
+
+      .abbr-item.abbr-del {
+        width: 20px;
+
+      }
+      .abbr-item.abbr-word {
+        width: 150px;
+
+      }
+      .abbr-item.abbr-desc {
+        width: 100%;
+
+      }
+    </style>
+  </head>
+  <body ng-controller="mainController">
+    <div class="container">
+
+      <!-- HEADER AND TODO COUNT -->
+      <div class="jumbotron text-center">
+        <label>Search: <input ng-model="searchText"></label>
+      </div>
+
+      <!-- TODO LIST -->
+      <table id="todo-list">
+          <!-- LOOP OVER THE TODOS IN $scope.todos -->
+          <tr class="abbr-item row" ng-repeat="abbr in abbrList | filter:searchText">
+            <td class="abbr-del"><button ng-click="deleteAbbr(abbr.key)">X</button></td>
+            <td class="abbr-word">{{abbr.key}}</td>
+            <td class="abbr-desc">{{abbr.desc}}</td>
+          </tr>
+      </table>
+
+      <!-- FORM TO CREATE TODOS -->
+      <div id="todo-form" class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+          <form>
+            <div class="form-group">
+
+              <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+              <input type="text" class="form-control input-lg text-center" placeholder="word" ng-model="formData.word">
+              <input type="text" class="form-control input-lg text-center" placeholder="description" ng-model="formData.desc">
+            </div>
+
+            <!-- createToDo() WILL CREATE NEW TODOS -->
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="putWord()">Add</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

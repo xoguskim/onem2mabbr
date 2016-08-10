@@ -17,7 +17,7 @@ function mainController($scope, $http) {
 
   // when submitting the add form, send the text to the node API
   $scope.putWord = function() {
-    $http.post('/onem2mdoc/api/abbr', $scope.formData)
+    $http.put('/onem2mdoc/api/abbr', $scope.formData)
       .success(function(data) {
         $scope.formData = {}; // clear the form so our user is ready to enter another
         $scope.abbrList = data;

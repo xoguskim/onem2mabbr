@@ -47,7 +47,7 @@ function writeToFile() {
 	if( !onWriting ) {
 		onWriting = true;
 
-		abbrFile = path.join(__dirname, 'abbreviations_.json');
+		abbrFile = path.join(__dirname, 'abbreviations.json');
 
 		fs.writeFile(abbrFile, JSON.stringify(abbrList), 'utf8', function() {
 			onWriting = false;	

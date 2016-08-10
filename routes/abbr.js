@@ -14,10 +14,15 @@ router.get('/:word', function(req, res, next) {
 
 
 router.put('/:word', function(req, res, next) {
-  console.log( "==> " + req.body.desc );
   var result = abbrStore.putWord(req.params.word, req.body.desc);
   res.json(result);
 });
+
+router.put('/', function(req, res, next) {
+  var result = abbrStore.putWord(req.body.word, req.body.desc);
+  res.json(result);
+});
+
 
 
 router.delete('/:word', function(req, res, next) {

@@ -6,7 +6,7 @@ function mainController($scope, $http) {
   $scope.formData = {};
 
   // when landing on the page, get all todos and show them
-  $http.get('/api/abbr')
+  $http.get('/onem2mdoc/api/abbr')
     .success(function(data) {
       $scope.abbrList = data;
       console.log(data);
@@ -17,7 +17,7 @@ function mainController($scope, $http) {
 
   // when submitting the add form, send the text to the node API
   $scope.putWord = function() {
-    $http.post('/api/abbr', $scope.formData)
+    $http.post('/onem2mdoc/api/abbr', $scope.formData)
       .success(function(data) {
         $scope.formData = {}; // clear the form so our user is ready to enter another
         $scope.abbrList = data;
@@ -30,7 +30,7 @@ function mainController($scope, $http) {
 
   // delete a todo after checking it
   $scope.deleteAbbr = function(word) {
-    $http.delete('/api/abbr/' + word)
+    $http.delete('/onem2mdoc/api/abbr/' + word)
       .success(function(data) {
         $scope.abbrList = data;
         console.log(data);

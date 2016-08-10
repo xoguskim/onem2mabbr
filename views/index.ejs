@@ -39,7 +39,7 @@
       <!-- TODO LIST -->
       <table id="todo-list">
           <!-- LOOP OVER THE TODOS IN $scope.todos -->
-          <tr class="abbr-item row" ng-repeat="abbr in abbrList | filter:searchText">
+          <tr class="abbr-item row ng-cloak" ng-repeat="abbr in abbrList | filter:searchText">
             <td class="abbr-del"><button ng-click="deleteAbbr(abbr.key)">X</button></td>
             <td class="abbr-word">{{abbr.key}}</td>
             <td class="abbr-desc">{{abbr.desc}}</td>

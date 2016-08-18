@@ -19,7 +19,7 @@ router.put('/:word', function(req, res, next) {
 });
 
 router.put('/', function(req, res, next) {
-  var result = abbrStore.putWord(req.body.word, req.body.desc);
+  var result = abbrStore.putWord(req.body.key, req.body.desc);
   res.json(result);
 });
 

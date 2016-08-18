@@ -3,6 +3,7 @@ var onem2mAbbr = angular.module('onem2mAbbr', []);
 onem2mAbbr.controller('mainController', mainController);
 
 var apiPrefix = '/onem2mdoc';
+// var apiPrefix = '';
 function mainController($scope, $http) {
   $scope.formData = {};
 

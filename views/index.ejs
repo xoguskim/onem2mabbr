@@ -59,29 +59,25 @@
   </head>
   <body ng-controller="mainController">
     <div class="container">
-      <div class="jumbotron text-center">
-        <label>Search: <input ng-model="searchText"></label>
-      </div>
-
       <!-- abbr LIST -->
       <table id="abbr-list">
 
         <tr id="abbr-form" class="form-group abbr-new" >
           <td class="abbr-del">
-            <button type="submit" class="btn btn-primary btn-lg" ng-click="putWord()">+</button>
+            <button tabindex="3" type="submit" class="btn btn-primary btn-lg" ng-click="putWord()">+</button>
           </td>
           <td class="abbr-word">
-              <input type="text" class="form-control input-lg text-center" placeholder="word" ng-model="formData.word">
+              <input tabindex="1" autofocus="autofocus" type="text" class="form-control input-lg text-center" placeholder="word to search or add" ng-model="formData.key">
           </td>
           <td class="abbr-desc">
-              <input type="text" class="form-control input-lg text-center" placeholder="description" ng-model="formData.desc">
+              <input tabindex="2" type="text" class="form-control input-lg text-center" placeholder="description" ng-model="formData.desc">
           </td>
         </tr>
 
 
 
         <!-- LOOP OVER THE abbr IN $scope.abbr -->
-        <tr class="abbr-item row ng-cloak" ng-repeat="abbr in abbrList | filter:searchText">
+        <tr class="abbr-item row ng-cloak" ng-repeat="abbr in abbrList | orderBy:key | filter:formData:strict">
           <td class="abbr-del"><button ng-click="deleteAbbr(abbr.key)">X</button></td>
           <td class="abbr-word">{{abbr.key}}</td>
           <td class="abbr-desc">{{abbr.desc}}</td>
